@@ -5,7 +5,9 @@
 package org.mozilla.telemetry.ping;
 
 import org.mozilla.telemetry.config.TelemetryConfiguration;
+import org.mozilla.telemetry.measurement.ArchMeasurement;
 import org.mozilla.telemetry.measurement.CreatedTimestampMeasurement;
+import org.mozilla.telemetry.measurement.DeviceMeasurement;
 import org.mozilla.telemetry.measurement.EventsMeasurement;
 import org.mozilla.telemetry.measurement.LocaleMeasurement;
 import org.mozilla.telemetry.measurement.OperatingSystemMeasurement;
@@ -30,6 +32,8 @@ public class TelemetryEventPingBuilder extends TelemetryPingBuilder {
         addMeasurement(new CreatedTimestampMeasurement());
         addMeasurement(new TimezoneOffsetMeasurement());
         addMeasurement(new SettingsMeasurement(configuration));
+        addMeasurement(new ArchMeasurement());
+        addMeasurement(new DeviceMeasurement());
         addMeasurement(eventsMeasurement = new EventsMeasurement(configuration));
     }
 

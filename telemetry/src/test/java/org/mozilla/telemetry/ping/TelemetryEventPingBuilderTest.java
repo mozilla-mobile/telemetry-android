@@ -10,6 +10,7 @@ import org.mozilla.telemetry.config.TelemetryConfiguration;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
+import java.util.Arrays;
 import java.util.Map;
 import java.util.UUID;
 
@@ -27,7 +28,7 @@ public class TelemetryEventPingBuilderTest {
         final TelemetryPing ping = builder.build();
 
         assertUUID(ping.getDocumentId());
-        assertEquals("focus-event", ping.getType());
+        assertEquals("mobile-event", ping.getType());
 
         final Map<String, Object> results = ping.getMeasurementResults();
         assertNotNull(results);
@@ -43,6 +44,12 @@ public class TelemetryEventPingBuilderTest {
 
         assertTrue(results.containsKey("osversion"));
         assertEquals("16", results.get("osversion"));
+
+        assertTrue(results.containsKey("arch"));
+        assertEquals("unknown", results.get("arch"));
+
+        assertTrue(results.containsKey("device"));
+        assertEquals("unknown-unknown", results.get("device"));
     }
 
     @Test
