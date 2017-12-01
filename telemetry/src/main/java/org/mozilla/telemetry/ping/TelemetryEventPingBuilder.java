@@ -5,7 +5,9 @@
 package org.mozilla.telemetry.ping;
 
 import org.mozilla.telemetry.config.TelemetryConfiguration;
+import org.mozilla.telemetry.measurement.ArchMeasurement;
 import org.mozilla.telemetry.measurement.CreatedTimestampMeasurement;
+import org.mozilla.telemetry.measurement.DeviceMeasurement;
 import org.mozilla.telemetry.measurement.EventsMeasurement;
 import org.mozilla.telemetry.measurement.LocaleMeasurement;
 import org.mozilla.telemetry.measurement.OperatingSystemMeasurement;
@@ -15,7 +17,7 @@ import org.mozilla.telemetry.measurement.SettingsMeasurement;
 import org.mozilla.telemetry.measurement.TimezoneOffsetMeasurement;
 
 public class TelemetryEventPingBuilder extends TelemetryPingBuilder {
-    public static final String TYPE = "focus-event";
+    public static final String TYPE = "mobile-event";
     private static final int VERSION = 1;
 
     private EventsMeasurement eventsMeasurement;
@@ -30,6 +32,8 @@ public class TelemetryEventPingBuilder extends TelemetryPingBuilder {
         addMeasurement(new CreatedTimestampMeasurement());
         addMeasurement(new TimezoneOffsetMeasurement());
         addMeasurement(new SettingsMeasurement(configuration));
+        addMeasurement(new ArchMeasurement());
+        addMeasurement(new DeviceMeasurement());
         addMeasurement(eventsMeasurement = new EventsMeasurement(configuration));
     }
 
