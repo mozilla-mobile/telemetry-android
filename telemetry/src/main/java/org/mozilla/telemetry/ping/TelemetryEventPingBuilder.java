@@ -15,7 +15,7 @@ import org.mozilla.telemetry.measurement.SettingsMeasurement;
 import org.mozilla.telemetry.measurement.TimezoneOffsetMeasurement;
 
 public class TelemetryEventPingBuilder extends TelemetryPingBuilder {
-    public static final String TYPE = "focus-event";
+    public static final String TYPE = "mobile-event";
     private static final int VERSION = 1;
 
     private EventsMeasurement eventsMeasurement;
