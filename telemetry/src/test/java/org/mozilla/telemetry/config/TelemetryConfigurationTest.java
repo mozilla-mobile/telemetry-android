@@ -31,7 +31,10 @@ public class TelemetryConfigurationTest {
                 .setServerEndpoint("http://127.0.0.1")
                 .setUserAgent("AwesomeTelemetry/29")
                 .setUpdateChannel("release")
-                .setUploadEnabled(false);
+                .setUploadEnabled(false)
+                .setMaximumNumberOfEventsPerPing(1000)
+                .setMaximumNumberOfPingsPerType(50)
+                .setMaximumNumberOfPingUploadsPerDay(500);
 
         assertEquals(RuntimeEnvironment.application, configuration.getContext());
         assertEquals("AwesomeApp", configuration.getAppName());
@@ -52,5 +55,8 @@ public class TelemetryConfigurationTest {
         assertEquals("AwesomeTelemetry/29", configuration.getUserAgent());
         assertEquals("release", configuration.getUpdateChannel());
         assertFalse(configuration.isUploadEnabled());
+        assertEquals(1000, configuration.getMaximumNumberOfEventsPerPing());
+        assertEquals(50, configuration.getMaximumNumberOfPingsPerType());
+        assertEquals(500, configuration.getMaximumNumberOfPingUploadsPerDay());
     }
 }
